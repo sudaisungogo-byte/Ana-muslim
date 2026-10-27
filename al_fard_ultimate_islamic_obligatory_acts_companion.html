@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al-Fard | Ultimate Guide to Islamic Obligatory Acts</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                            950: '#022c22',
+                        },
+                        amber: {
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        arabic: ['Amiri', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .arabic-text {
+            font-family: 'Amiri', serif;
+            direction: rtl;
+            line-height: 2.2;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #059669;
+            border-radius: 9999px;
+        }
+        .active-tab {
+            background-color: #047857 !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col custom-scrollbar">
+
+    <!-- Top Announcement / Verse Bar -->
+    <div class="bg-emerald-950 text-emerald-200 text-xs py-2 px-4 text-center border-b border-emerald-800/50 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto flex items-center justify-center gap-2">
+            <i class="fa-solid fa-book-open text-amber-400"></i>
+            <span>"Indeed, prayer has been decreed upon the believers a decree of specified times." [Surah An-Nisa 4:103]</span>
+        </div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header class="bg-emerald-900 text-white shadow-xl sticky top-0 z-50 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('pillars')">
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-amber-400 to-amber-500 flex items-center justify-center shadow-lg text-emerald-950 font-black text-2xl">
+                        <i class="fa-solid fa-kaaba"></i>
+                    </div>
+                    <div>
+                        <span class="font-extrabold text-2xl tracking-tight block">Al-Fard</span>
+                        <span class="text-[10px] uppercase font-semibold tracking-wider text-emerald-300 block -mt-1">Islamic Obligatory Companion</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-1 bg-emerald-950/60 p-1.5 rounded-2xl border border-emerald-800/50">
+                    <button id="btn-pillars" onclick="switchTab('pillars')" class="nav-btn active-tab px-3.5 py-2 rounded-xl text-xs font-semibold transition-all">5 Pillars</button>
+                    <button id="btn-salah" onclick="switchTab('salah')" class="nav-btn px-3.5 py-2 rounded-xl text-xs font-semibold text-emerald-100 hover:bg-emerald-800/60 transition-all">Salah Guide</button>
+                    <button id="btn-wudu" onclick="switchTab('wudu')" class="nav-btn px-3.5 py-2 rounded-xl text-xs font-semibold text-emerald-100 hover:bg-emerald-800/60 transition-all">Wudu & Ghusl</button>
+                    <button id="btn-surahs" onclick="switchTab('surahs')" class="nav-btn px-3.5 py-2 rounded-xl text-xs font-semibold text-emerald-100 hover:bg-emerald-800/60 transition-all">Essential Surahs</button>
+                    <button id="btn-hadith" onclick="switchTab('hadith')" class="nav-btn px-3.5 py-2 rounded-xl text-xs font-semibold text-emerald-100 hover:bg-emerald-800/60 transition-all">Hadith Vault</button>
+                    <button id="btn-adhkar" onclick="switchTab('adhkar')" class="nav-btn px-3.5 py-2 rounded-xl text-xs font-semibold text-emerald-100 hover:bg-emerald-800/60 transition-all">Tasbih & Adhkar</button>
+                    <button id="btn-zakat" onclick="switchTab('zakat')" class="nav-btn px-3.5 py-2 rounded-xl text-xs font-semibold text-emerald-100 hover:bg-emerald-800/60 transition-all">Zakat & Sawm</button>
+                    <button id="btn-tracker" onclick="switchTab('tracker')" class="nav-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-amber-500 text-emerald-950 hover:bg-amber-400 transition-all font-bold">Daily Tracker</button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl bg-emerald-800 text-emerald-100 hover:text-white focus:outline-none">
+                    <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-emerald-950 border-t border-emerald-800/60 px-4 pt-3 pb-6 space-y-2">
+            <button onclick="switchTab('pillars')" class="block w-full text-left px-4 py-3 rounded-xl text-sm font-semibold text-white bg-emerald-800/50">5 Pillars of Islam</button>
+            <button onclick="switchTab('salah')" class="block w-full text-left px-4 py-3 rounded-xl text-sm font-semibold text-emerald-100 hover:bg-emerald-800/30">Salah (Prayer Guide)</button>
+            <button onclick="switchTab('wudu')" class="block w-full text-left px-4 py-3 rounded-xl text-sm font-semibold text-emerald-100 hover:bg-emerald-800/30">Wudu & Ghusl (Purification)</button>
+            <button onclick="switchTab('surahs')" class="block w-full text-left px-4 py-3 rounded-xl text-sm font-semibold text-emerald-100 hover:bg-emerald-800/30">Essential Surahs & Benefits</button>
+            <button onclick="switchTab('hadith')" class="block w-full text-left px-4 py-3 rounded-xl text-sm font-semibold text-emerald-100 hover:bg-emerald-800/30">Hadith Library</button>
+            <button onclick="switchTab('adhkar')" class="block w-full text-left px-4 py-3 rounded-xl text-sm font-semibold text-emerald-100 hover:bg-emerald-800/30">Digital Tasbih & Adhkar</button>
+            <button onclick="switchTab('zakat')" class="block w-full text-left px-4 py-3 rounded-xl text-sm font-semibold text-emerald-100 hover:bg-emerald-800/30">Zakat & Sawm Calculators</button>
+            <button onclick="switchTab('tracker')" class="block w-full text-left px-4 py-3 rounded-xl text-sm font-bold text-slate-900 bg-amber-400">Daily Obligation Tracker</button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+        <!-- SECTION: 5 PILLARS OVERVIEW -->
+        <section id="sec-pillars" class="space-y-8">
+            <!-- Hero Banner -->
+            <div class="bg-gradient-to-r from-emerald-900 via-emerald-800 to-emerald-950 rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden border border-emerald-700/40">
+                <div class="relative z-10 max-w-3xl space-y-4">
+                    <span class="inline-flex items-center gap-2 bg-amber-400/20 text-amber-300 border border-amber-400/30 text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider">
+                        <i class="fa-solid fa-star text-amber-400"></i> The Foundations of Faith
+                    </span>
+                    <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">The Five Pillars of Islam <br/><span class="text-amber-400 font-arabic font-normal">(أركان الإسلام)</span></h1>
+                    <p class="text-emerald-100 text-sm sm:text-base leading-relaxed">
+                        Islam is built upon five fundamental pillars. Fulfilling these obligatory acts (*Fard*) forms the bedrock of a Muslim's faith, spiritual discipline, and relationship with Allah (SWT).
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-3">
+                        <button onclick="switchTab('salah')" class="bg-amber-400 hover:bg-amber-300 text-emerald-950 px-5 py-2.5 rounded-xl font-bold text-sm shadow-md transition active:scale-95 flex items-center gap-2">
+                            <span>Start Prayer Guide</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                        <button onclick="switchTab('tracker')" class="bg-emerald-800/80 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-xl font-semibold text-sm border border-emerald-600 transition active:scale-95 flex items-center gap-2">
+                            <i class="fa-solid fa-check-double text-amber-400"></i>
+                            <span>Track Daily Fard</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="absolute -right-12 -bottom-12 opacity-10 text-white text-[220px] pointer-events-none">
+                    <i class="fa-solid fa-mosque"></i>
+                </div>
+            </div>
+
+            <!-- Pillars Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Shahada -->
+                <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-extrabold text-xl group-hover:bg-emerald-600 group-hover:text-white transition-colors">1</div>
+                            <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">Core Creed</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-1">Shahada</h3>
+                        <p class="text-xs text-slate-500 font-semibold mb-3">Declaration of Faith</p>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">Bearing witness that there is no god but Allah, and Prophet Muhammad (ﷺ) is His final messenger.</p>
+                    </div>
+                    <div class="bg-emerald-50/70 p-4 rounded-xl border border-emerald-100/80 text-center">
+                        <p class="arabic-text text-lg text-emerald-950 font-bold">أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا ٱللَّٰهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ ٱللَّٰهِ</p>
+                    </div>
+                </div>
+
+                <!-- Salah -->
+                <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-extrabold text-xl group-hover:bg-emerald-600 group-hover:text-white transition-colors">2</div>
+                            <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">5 Daily Prayers</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-1">Salah</h3>
+                        <p class="text-xs text-slate-500 font-semibold mb-3">Obligatory Worship</p>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">Performing the five daily prayers at prescribed times throughout the day and night.</p>
+                    </div>
+                    <button onclick="switchTab('salah')" class="w-full text-emerald-700 bg-emerald-50 hover:bg-emerald-100 font-bold py-3 rounded-xl text-xs transition flex items-center justify-center gap-2">
+                        <span>Interactive Salah Guide</span>
+                        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </button>
+                </div>
+
+                <!-- Zakat -->
+                <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-extrabold text-xl group-hover:bg-emerald-600 group-hover:text-white transition-colors">3</div>
+                            <span class="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-lg">Annual Alms</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-1">Zakat</h3>
+                        <p class="text-xs text-slate-500 font-semibold mb-3">Obligatory Charity</p>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">Giving 2.5% of qualifying accumulated wealth annually to purify wealth and help those in need.</p>
+                    </div>
+                    <button onclick="switchTab('zakat')" class="w-full text-emerald-700 bg-emerald-50 hover:bg-emerald-100 font-bold py-3 rounded-xl text-xs transition flex items-center justify-center gap-2">
+                        <span>Zakat Calculator</span>
+                        <i class="fa-solid fa-calculator text-xs"></i>
+                    </button>
+                </div>
+
+                <!-- Sawm -->
+                <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-extrabold text-xl group-hover:bg-emerald-600 group-hover:text-white transition-colors">4</div>
+                            <span class="text-xs font-bold text-purple-700 bg-purple-50 px-2.5 py-1 rounded-lg">Ramadan Fast</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-1">Sawm</h3>
+                        <p class="text-xs text-slate-500 font-semibold mb-3">Fasting Holy Month</p>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">Abstaining from food, drink, and desires from dawn to sunset during Ramadan for God-consciousness (*Taqwa*).</p>
+                    </div>
+                    <button onclick="switchTab('zakat')" class="w-full text-emerald-700 bg-emerald-50 hover:bg-emerald-100 font-bold py-3 rounded-xl text-xs transition flex items-center justify-center gap-2">
+                        <span>Fasting Rules & Guide</span>
+                        <i class="fa-solid fa-moon text-xs"></i>
+                    </button>
+                </div>
+
+                <!-- Hajj -->
+                <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-extrabold text-xl group-hover:bg-emerald-600 group-hover:text-white transition-colors">5</div>
+                            <span class="text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg">Pilgrimage</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-1">Hajj</h3>
+                        <p class="text-xs text-slate-500 font-semibold mb-3">Pilgrimage to Makkah</p>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">Obligatory once in a lifetime for every adult Muslim who is physically and financially capable.</p>
+                    </div>
+                    <div class="text-xs text-slate-500 bg-slate-50 p-3 rounded-xl flex items-center gap-2">
+                        <i class="fa-solid fa-circle-info text-emerald-600"></i>
+                        <span>Requires Ihram, Tawaf, & Arafat standing.</span>
+                    </div>
+                </div>
+
+                <!-- Interactive Qibla & Prayer Visualizer Widget -->
+                <div class="bg-gradient-to-br from-emerald-900 to-emerald-950 p-7 rounded-2xl text-white shadow-md flex flex-col justify-between relative overflow-hidden">
+                    <div class="relative z-10">
+                        <span class="bg-amber-400 text-emerald-950 font-black text-[10px] px-2.5 py-1 rounded-md uppercase tracking-wider">Quick Visualizer</span>
+                        <h3 class="text-xl font-bold mt-2">Qibla & Prayer Focus</h3>
+                        <p class="text-emerald-200 text-xs mt-1">All obligatory acts center around facing Makkah (*Kaaba*) with pure intention.</p>
+                    </div>
+                    <div class="my-4 flex justify-center relative z-10">
+                        <div class="w-24 h-24 rounded-full border-4 border-amber-400/40 flex items-center justify-center bg-emerald-900/80 shadow-inner relative">
+                            <i class="fa-solid fa-kaaba text-amber-400 text-3xl"></i>
+                            <div class="absolute -top-2 text-[10px] font-bold text-amber-300 bg-emerald-950 px-2 py-0.5 rounded-full border border-amber-400/30">QIBLA</div>
+                        </div>
+                    </div>
+                    <button onclick="switchTab('salah')" class="w-full bg-amber-400 hover:bg-amber-300 text-emerald-950 font-bold py-2.5 rounded-xl text-xs transition relative z-10">Learn Daily Prayers</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: SALAH (PRAYER GUIDE & DETAILS) -->
+        <section id="sec-salah" class="hidden space-y-8">
+            <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-sm flex flex-col md:flex-row justify-between md:items-center gap-4">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">The 5 Daily Obligatory Prayers (Salah)</h2>
+                    <p class="text-slate-600 text-sm mt-1">Detailed breakdown of prayer times, Rakat structures, and obligatory components.</p>
+                </div>
+                <div class="flex items-center gap-2 bg-emerald-50 px-4 py-2 rounded-xl border border-emerald-100 text-emerald-800 text-xs font-bold">
+                    <i class="fa-solid fa-clock text-emerald-600"></i>
+                    <span>Primary Obligation (Fard 'Ayn)</span>
+                </div>
+            </div>
+
+            <!-- Prayer Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                <!-- Fajr -->
+                <div class="bg-white p-5 rounded-2xl border-t-4 border-emerald-600 border-x border-b border-slate-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="flex justify-between items-center mb-2">
+                        <h4 class="font-extrabold text-xl text-slate-900">Fajr</h4>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">Dawn</span>
+                    </div>
+                    <div class="text-xs space-y-2 mt-3">
+                        <div class="bg-slate-50 p-2 rounded-lg font-semibold text-slate-700">Fard: <span class="text-emerald-700 font-extrabold">2 Rakat</span></div>
+                        <p class="text-slate-500">Recitation: <span class="text-slate-800 font-medium">Loud</span></p>
+                        <p class="text-slate-500">Timing: <span class="text-slate-800 font-medium">True Dawn until Sunrise</span></p>
+                    </div>
+                </div>
+
+                <!-- Dhuhr -->
+                <div class="bg-white p-5 rounded-2xl border-t-4 border-amber-500 border-x border-b border-slate-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="flex justify-between items-center mb-2">
+                        <h4 class="font-extrabold text-xl text-slate-900">Dhuhr</h4>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-amber-700 bg-amber-50 px-2 py-0.5 rounded">Noon</span>
+                    </div>
+                    <div class="text-xs space-y-2 mt-3">
+                        <div class="bg-slate-50 p-2 rounded-lg font-semibold text-slate-700">Fard: <span class="text-amber-700 font-extrabold">4 Rakat</span></div>
+                        <p class="text-slate-500">Recitation: <span class="text-slate-800 font-medium">Silent</span></p>
+                        <p class="text-slate-500">Timing: <span class="text-slate-800 font-medium">After midday till shadow equals object</span></p>
+                    </div>
+                </div>
+
+                <!-- Asr -->
+                <div class="bg-white p-5 rounded-2xl border-t-4 border-orange-500 border-x border-b border-slate-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="flex justify-between items-center mb-2">
+                        <h4 class="font-extrabold text-xl text-slate-900">Asr</h4>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-orange-700 bg-orange-50 px-2 py-0.5 rounded">Afternoon</span>
+                    </div>
+                    <div class="text-xs space-y-2 mt-3">
+                        <div class="bg-slate-50 p-2 rounded-lg font-semibold text-slate-700">Fard: <span class="text-orange-700 font-extrabold">4 Rakat</span></div>
+                        <p class="text-slate-500">Recitation: <span class="text-slate-800 font-medium">Silent</span></p>
+                        <p class="text-slate-500">Timing: <span class="text-slate-800 font-medium">Late afternoon till sunset</span></p>
+                    </div>
+                </div>
+
+                <!-- Maghrib -->
+                <div class="bg-white p-5 rounded-2xl border-t-4 border-purple-600 border-x border-b border-slate-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="flex justify-between items-center mb-2">
+                        <h4 class="font-extrabold text-xl text-slate-900">Maghrib</h4>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-2 py-0.5 rounded">Sunset</span>
+                    </div>
+                    <div class="text-xs space-y-2 mt-3">
+                        <div class="bg-slate-50 p-2 rounded-lg font-semibold text-slate-700">Fard: <span class="text-purple-700 font-extrabold">3 Rakat</span></div>
+                        <p class="text-slate-500">Recitation: <span class="text-slate-800 font-medium">Loud (1st 2)</span></p>
+                        <p class="text-slate-500">Timing: <span class="text-slate-800 font-medium">Sunset till red twilight fades</span></p>
+                    </div>
+                </div>
+
+                <!-- Isha -->
+                <div class="bg-white p-5 rounded-2xl border-t-4 border-indigo-700 border-x border-b border-slate-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="flex justify-between items-center mb-2">
+                        <h4 class="font-extrabold text-xl text-slate-900">Isha</h4>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">Night</span>
+                    </div>
+                    <div class="text-xs space-y-2 mt-3">
+                        <div class="bg-slate-50 p-2 rounded-lg font-semibold text-slate-700">Fard: <span class="text-indigo-700 font-extrabold">4 Rakat</span></div>
+                        <p class="text-slate-500">Recitation: <span class="text-slate-800 font-medium">Loud (1st 2)</span></p>
+                        <p class="text-slate-500">Timing: <span class="text-slate-800 font-medium">Nightfall till midnight/dawn</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pillars vs Sunnah of Prayer -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Arkan (Obligatory Steps) -->
+                <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-sm space-y-4">
+                    <div class="flex items-center gap-3 border-b pb-4">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-list-check"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900">14 Essential Pillars of Prayer (Arkan)</h3>
+                            <p class="text-xs text-slate-500">If any pillar is omitted, the prayer is invalid and must be repeated.</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-2.5 text-sm">
+                        <li class="flex items-start gap-2.5 text-slate-700"><i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i><span><strong>1. Qiyam:</strong> Standing during obligatory prayer for those able.</span></li>
+                        <li class="flex items-start gap-2.5 text-slate-700"><i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i><span><strong>2. Takbirat al-Ihram:</strong> The opening "Allahu Akbar".</span></li>
+                        <li class="flex items-start gap-2.5 text-slate-700"><i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i><span><strong>3. Reciting Surah Al-Fatiha:</strong> In every single Rakat.</span></li>
+                        <li class="flex items-start gap-2.5 text-slate-700"><i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i><span><strong>4. Ruku:</strong> Bowing until hands rest firmly on knees.</span></li>
+                        <li class="flex items-start gap-2.5 text-slate-700"><i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i><span><strong>5. Standing straight:</strong> Rising fully from bowing.</span></li>
+                        <li class="flex items-start gap-2.5 text-slate-700"><i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i><span><strong>6. Sujood:</strong> Prostrating on 7 limbs (forehead/nose, hands, knees, toes).</span></li>
+                        <li class="flex items-start gap-2.5 text-slate-700"><i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i><span><strong>7. Sitting between prostrations:</strong> Pausing upright between Sujood.</span></li>
+                        <li class="flex items-start gap-2.5 text-slate-700"><i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i><span><strong>8. Tumani'nah:</strong> Calmness and tranquility in every posture.</span></li>
+                    </ul>
+                </div>
+
+                <!-- Tashahhud & Salam Recitation -->
+                <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-sm space-y-4 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <h3 class="text-xl font-bold text-slate-900 border-b pb-3">Final Tashahhud (At-Tahiyaat)</h3>
+                        <p class="text-xs text-slate-500">Recited in the sitting position of the final Rakat before Tasleem.</p>
+                        <div class="bg-emerald-50/70 p-4 rounded-xl border border-emerald-100 text-right">
+                            <p class="arabic-text text-lg font-bold text-emerald-950">
+                                ٱلتَّحِيَّاتُ لِلَّٰهِ وَٱلصَّلَوَاتُ وَٱلطَّيِّبَاتُ، ٱلسَّلَامُ عَلَيْكَ أَيُّهَا ٱلنَّبِيُّ وَرَحْمَةُ ٱللَّٰهِ وَبَرَكَاتُهُ، ٱلسَّلَامُ عَلَيْنَا وَعَلَىٰ عِبَادِ ٱللَّٰهِ ٱلصَّالِحِينَ
+                            </p>
+                        </div>
+                        <p class="text-xs text-slate-600 italic">"All compliments, prayers and pure deeds are for Allah. Peace be upon you, O Prophet, and the mercy of Allah and His blessings..."</p>
+                    </div>
+                    <div class="bg-amber-50 p-4 rounded-xl border border-amber-200 text-xs text-amber-900">
+                        <strong class="font-bold">Completion of Prayer (Tasleem):</strong> Conclude by turning head right then left saying: 
+                        <span class="font-arabic text-sm text-emerald-950 font-bold ml-1">"ٱلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ ٱللَّٰهِ"</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: WUDU & GHUSL -->
+        <section id="sec-wudu" class="hidden space-y-8">
+            <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-sm">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Purification Guides (Wudu & Ghusl)</h2>
+                <p class="text-slate-600 text-sm mt-1">Ritual purification is an absolute prerequisite condition (*Shart*) for Salah validity.</p>
+            </div>
+
+            <!-- Fard Wudu Steps -->
+            <div class="space-y-4">
+                <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-droplet text-emerald-600"></i> The 4 Obligatory (Fard) Acts of Wudu
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                        <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm mb-3">1</div>
+                        <h4 class="font-bold text-slate-900 text-base">Washing Entire Face</h4>
+                        <p class="text-xs text-slate-600 mt-1">From hairline to bottom of chin, and earlobe to earlobe (Once obligatory, 3x Sunnah).</p>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                        <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm mb-3">2</div>
+                        <h4 class="font-bold text-slate-900 text-base">Washing Arms & Elbows</h4>
+                        <p class="text-xs text-slate-600 mt-1">Washing both arms thoroughly including fingertips up to and including elbows.</p>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                        <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm mb-3">3</div>
+                        <h4 class="font-bold text-slate-900 text-base">Wiping Head</h4>
+                        <p class="text-xs text-slate-600 mt-1">Wiping wet hands over head once (at least 1/4 of head or full head depending on school).</p>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                        <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm mb-3">4</div>
+                        <h4 class="font-bold text-slate-900 text-base">Washing Feet & Ankles</h4>
+                        <p class="text-xs text-slate-600 mt-1">Washing both feet thoroughly up to and including ankles, cleaning between toes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ghusl Box -->
+            <div class="bg-gradient-to-r from-emerald-900 to-emerald-950 p-6 sm:p-8 rounded-3xl text-white shadow-xl space-y-4">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-shower text-amber-400 text-2xl"></i>
+                    <h3 class="text-2xl font-bold">Fard Acts of Major Ritual Bath (Ghusl)</h3>
+                </div>
+                <p class="text-emerald-100 text-sm">Ghusl is required after major ritual impurity (*Janabah*, post-menstruation, etc.).</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2 text-xs">
+                    <div class="bg-emerald-900/80 p-4 rounded-xl border border-emerald-700/50">
+                        <strong class="text-amber-300 font-bold block mb-1">1. Intention (Niyyah)</strong>
+                        <span>Intending in heart to purify yourself for Allah's worship.</span>
+                    </div>
+                    <div class="bg-emerald-900/80 p-4 rounded-xl border border-emerald-700/50">
+                        <strong class="text-amber-300 font-bold block mb-1">2. Rinse Mouth & Nose</strong>
+                        <span>Rinsing mouth thoroughly and sniffing water into nostrils.</span>
+                    </div>
+                    <div class="bg-emerald-900/80 p-4 rounded-xl border border-emerald-700/50">
+                        <strong class="text-amber-300 font-bold block mb-1">3. Wash Entire Body</strong>
+                        <span>Ensuring water reaches every part of head, skin, and hair root.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: ESSENTIAL SURAHS & USES -->
+        <section id="sec-surahs" class="hidden space-y-8">
+            <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Essential Quranic Surahs & Virtues</h2>
+                    <p class="text-slate-600 text-sm mt-1">Core chapters for daily prayers, protection, healing, and spiritual reflection.</p>
+                </div>
+                <div class="text-xs font-semibold text-slate-500 bg-slate-100 px-3 py-1.5 rounded-lg">
+                    <i class="fa-solid fa-book-quran text-emerald-600 mr-1"></i> Authentic References
+                </div>
+            </div>
+
+            <!-- Surah Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Surah Al-Fatiha -->
+                <div class="bg-white p-7 rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-md transition space-y-4 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start border-b pb-3">
+                            <div>
+                                <span class="text-[10px] uppercase font-bold bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-md">Surah 1 • 7 Verses</span>
+                                <h3 class="text-2xl font-bold text-slate-900 mt-1">Al-Fatiha (The Opening)</h3>
+                            </div>
+                            <span class="arabic-text text-2xl font-bold text-emerald-800">الفاتحة</span>
+                        </div>
+                        <div class="bg-emerald-50/60 p-4 rounded-2xl my-4 text-right border border-emerald-100">
+                            <p class="arabic-text text-xl font-bold text-slate-900">
+                                بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ • ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَالَمِينَ • ٱلرَّحْمَٰنِ ٱلرَّحِيمِ • مَالِكِ يَوْمِ ٱلدِّينِ • إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ • ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ
+                            </p>
+                        </div>
+                        <div class="space-y-2 text-xs text-slate-600">
+                            <p><strong class="text-slate-900">Obligation & Usage:</strong> Mandatory (*Fard*) in every single unit (Rakat) of Salah.</p>
+                            <p><strong class="text-slate-900">Virtue / Benefit:</strong> Known as <em>Al-Shifa</em> (The Cure) and <em>Umm al-Kitab</em> (Mother of the Book). Recited for healing and divine guidance.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ayat al-Kursi -->
+                <div class="bg-white p-7 rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-md transition space-y-4 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start border-b pb-3">
+                            <div>
+                                <span class="text-[10px] uppercase font-bold bg-amber-100 text-amber-800 px-2.5 py-1 rounded-md">Surah Al-Baqarah 2:255</span>
+                                <h3 class="text-2xl font-bold text-slate-900 mt-1">Ayat al-Kursi (Throne Verse)</h3>
+                            </div>
+                            <span class="arabic-text text-2xl font-bold text-emerald-800">آية الكرسي</span>
+                        </div>
+                        <div class="bg-emerald-50/60 p-4 rounded-2xl my-4 text-right border border-emerald-100">
+                            <p class="arabic-text text-lg font-bold text-slate-900">
+                                ٱللَّهُ لَا إِلَٰهَ إِلَّا هُوَ ٱلْحَيُّ ٱلْقَيُّومُ ۚ لَا تَأْخُذُهُۥ سِنَةٌ وَلَا نَوْمٌ ۚ لَّهُۥ مَا فِي ٱلسَّمَٰوَٰتِ وَمَا فِي ٱلْأَرْضِ
+                            </p>
+                        </div>
+                        <div class="space-y-2 text-xs text-slate-600">
+                            <p><strong class="text-slate-900">Recommended Times:</strong> Recited after every obligatory prayer and every night before sleeping.</p>
+                            <p><strong class="text-slate-900">Virtue / Benefit:</strong> Prophet Muhammad (ﷺ) said whoever recites it after prayer, nothing stands between them and Paradise except death.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Surah Al-Ikhlas -->
+                <div class="bg-white p-7 rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-md transition space-y-4 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start border-b pb-3">
+                            <div>
+                                <span class="text-[10px] uppercase font-bold bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-md">Surah 112 • 4 Verses</span>
+                                <h3 class="text-2xl font-bold text-slate-900 mt-1">Al-Ikhlas (Sincerity)</h3>
+                            </div>
+                            <span class="arabic-text text-2xl font-bold text-emerald-800">الإخلاص</span>
+                        </div>
+                        <div class="bg-emerald-50/60 p-4 rounded-2xl my-4 text-right border border-emerald-100">
+                            <p class="arabic-text text-xl font-bold text-slate-900">
+                                قُلْ هُوَ ٱللَّهُ أَحَدٌ • ٱللَّهُ ٱلصَّمَدُ • لَمْ يَلِدْ وَلَمْ يُولَدْ • وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌ
+                            </p>
+                        </div>
+                        <div class="space-y-2 text-xs text-slate-600">
+                            <p><strong class="text-slate-900">Recommended Times:</strong> Recited in 3rd/4th Rakat, Witr prayer, morning/evening Adhkar.</p>
+                            <p><strong class="text-slate-900">Virtue / Benefit:</strong> Equal to one-third of the entire Quran in spiritual reward.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Surah Al-Falaq & An-Nas -->
+                <div class="bg-white p-7 rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-md transition space-y-4 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start border-b pb-3">
+                            <div>
+                                <span class="text-[10px] uppercase font-bold bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-md">Surah 113 & 114</span>
+                                <h3 class="text-2xl font-bold text-slate-900 mt-1">Al-Mu'awwidhatayn (Verses of Refuge)</h3>
+                            </div>
+                            <span class="arabic-text text-2xl font-bold text-emerald-800">الفلق والناس</span>
+                        </div>
+                        <div class="bg-emerald-50/60 p-4 rounded-2xl my-4 text-right border border-emerald-100">
+                            <p class="arabic-text text-lg font-bold text-slate-900">
+                                قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ • قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ
+                            </p>
+                        </div>
+                        <div class="space-y-2 text-xs text-slate-600">
+                            <p><strong class="text-slate-900">Recommended Times:</strong> Recited 3x every morning, evening, and prior to sleep.</p>
+                            <p><strong class="text-slate-900">Virtue / Benefit:</strong> Unmatched spiritual protection against evil eye, envy (*Hasad*), and whispered evil.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: HADITH LIBRARY -->
+        <section id="sec-hadith" class="hidden space-y-8">
+            <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-sm">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Authentic Hadith Vault</h2>
+                <p class="text-slate-600 text-sm mt-1">Prophetic traditions guiding obligatory acts, character, and spiritual purity.</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Hadith 1 -->
+                <div class="bg-white p-6 sm:p-7 rounded-2xl border-l-4 border-emerald-600 border-y border-r border-slate-200/80 shadow-sm space-y-3">
+                    <div class="flex justify-between items-center text-xs text-slate-500 border-b pb-2">
+                        <span class="font-bold text-slate-700">Source: Sahih al-Bukhari #1 • Sahih Muslim #1907</span>
+                        <span class="bg-emerald-50 text-emerald-800 font-bold px-2.5 py-0.5 rounded">Core Foundation</span>
+                    </div>
+                    <p class="arabic-text text-xl text-emerald-950 font-bold text-right">إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى</p>
+                    <p class="text-slate-700 text-sm italic">"Actions are judged by intentions, and every person will only get what they intended."</p>
+                    <div class="text-xs text-slate-500 bg-slate-50 p-3 rounded-xl">
+                        <strong class="text-slate-800">Application:</strong> Every obligatory act (Wudu, Prayer, Fasting, Zakat) requires a sincere intention (*Niyyah*) purely for Allah.
+                    </div>
+                </div>
+
+                <!-- Hadith 2 -->
+                <div class="bg-white p-6 sm:p-7 rounded-2xl border-l-4 border-amber-500 border-y border-r border-slate-200/80 shadow-sm space-y-3">
+                    <div class="flex justify-between items-center text-xs text-slate-500 border-b pb-2">
+                        <span class="font-bold text-slate-700">Source: Sahih Muslim #223</span>
+                        <span class="bg-amber-50 text-amber-800 font-bold px-2.5 py-0.5 rounded">Purification</span>
+                    </div>
+                    <p class="arabic-text text-xl text-emerald-950 font-bold text-right">الطَّهُورُ شَطْرُ الإِيمَانِ</p>
+                    <p class="text-slate-700 text-sm italic">"Cleanliness and purity constitute half of faith."</p>
+                    <div class="text-xs text-slate-500 bg-slate-50 p-3 rounded-xl">
+                        <strong class="text-slate-800">Application:</strong> Cleanliness is not just hygiene in Islam; it is a direct spiritual requirement for standing before Allah.
+                    </div>
+                </div>
+
+                <!-- Hadith 3 -->
+                <div class="bg-white p-6 sm:p-7 rounded-2xl border-l-4 border-blue-600 border-y border-r border-slate-200/80 shadow-sm space-y-3">
+                    <div class="flex justify-between items-center text-xs text-slate-500 border-b pb-2">
+                        <span class="font-bold text-slate-700">Source: Sunan al-Tirmidhi #2608</span>
+                        <span class="bg-blue-50 text-blue-800 font-bold px-2.5 py-0.5 rounded">Prayer Value</span>
+                    </div>
+                    <p class="arabic-text text-xl text-emerald-950 font-bold text-right">رَأْسُ الأَمْرِ الإِسْلاَمُ وَعَمُودُهُ الصَّلاَةُ</p>
+                    <p class="text-slate-700 text-sm italic">"The head of the matter is Islam, its central pillar is prayer..."</p>
+                    <div class="text-xs text-slate-500 bg-slate-50 p-3 rounded-xl">
+                        <strong class="text-slate-800">Application:</strong> Prayer (*Salah*) is the primary structural beam holding up a Muslim's faith.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: DIGITAL TASBIH & ADHKAR -->
+        <section id="sec-adhkar" class="hidden space-y-8">
+            <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-sm">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Digital Tasbih & Daily Dhikr</h2>
+                <p class="text-slate-600 text-sm mt-1">Maintain your remembrance of Allah following prayers and during morning/evening routines.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Interactive Counter Widget -->
+                <div class="bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-950 text-white rounded-3xl p-8 shadow-2xl flex flex-col items-center justify-between text-center space-y-6 lg:col-span-1 border border-emerald-700/50">
+                    <div class="w-full flex justify-between items-center text-xs text-emerald-200">
+                        <span>Target: <strong id="dhikr-target-display" class="text-amber-400">33</strong></span>
+                        <button onclick="resetTasbih()" class="text-emerald-300 hover:text-white transition"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+                    </div>
+
+                    <div class="space-y-2">
+                        <p id="dhikr-label" class="arabic-text text-3xl font-extrabold text-amber-300">سُبْحَانَ ٱللَّٰهِ</p>
+                        <p id="dhikr-translation" class="text-xs text-emerald-200">Glory be to Allah (SubhanAllah)</p>
+                    </div>
+
+                    <!-- Big Counter Circle -->
+                    <button onclick="countTasbih()" class="w-36 h-36 rounded-full bg-gradient-to-tr from-amber-400 to-amber-500 text-emerald-950 shadow-xl flex flex-col items-center justify-center font-black transition active:scale-90 hover:brightness-105 border-4 border-emerald-900/50">
+                        <span id="tasbih-count" class="text-5xl tracking-tight">0</span>
+                        <span class="text-[10px] uppercase font-bold text-emerald-900 tracking-wider">TAP HERE</span>
+                    </button>
+
+                    <!-- Quick Dhikr Preset Selector -->
+                    <div class="grid grid-cols-3 gap-2 w-full text-[11px] font-bold pt-2">
+                        <button onclick="setDhikr('سُبْحَانَ ٱللَّٰهِ', 'Glory be to Allah (33x)', 33)" class="bg-emerald-950/80 hover:bg-emerald-800 py-2 rounded-xl border border-emerald-700/40">SubhanAllah</button>
+                        <button onclick="setDhikr('ٱلْحَمْدُ لِلَّٰهِ', 'Praise be to Allah (33x)', 33)" class="bg-emerald-950/80 hover:bg-emerald-800 py-2 rounded-xl border border-emerald-700/40">Alhamdulillah</button>
+                        <button onclick="setDhikr('ٱللَّٰهُ أَكْبَرُ', 'Allah is the Greatest (34x)', 34)" class="bg-emerald-950/80 hover:bg-emerald-800 py-2 rounded-xl border border-emerald-700/40">Allahu Akbar</button>
+                    </div>
+                </div>
+
+                <!-- Daily Post-Prayer Adhkar Guide -->
+                <div class="lg:col-span-2 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-sm space-y-4">
+                    <h3 class="text-xl font-bold text-slate-900 border-b pb-3">Recommended Post-Salah Remembrance</h3>
+                    <div class="space-y-3 text-sm">
+                        <div class="p-4 bg-slate-50 rounded-2xl space-y-1">
+                            <span class="text-xs font-bold text-emerald-700">1. Astaghfirullah (3 times)</span>
+                            <p class="arabic-text text-lg text-emerald-950 font-bold">أَسْتَغْفِرُ ٱللَّٰهَ</p>
+                            <p class="text-xs text-slate-600">"I seek forgiveness from Allah."</p>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 rounded-2xl space-y-1">
+                            <span class="text-xs font-bold text-emerald-700">2. Allahumma Antas-Salam</span>
+                            <p class="arabic-text text-lg text-emerald-950 font-bold">اللَّهُمَّ أَنْتَ السَّلاَمُ وَمِنْكَ السَّلاَمُ تَبَارَكْتَ يَا ذَا الْجَلاَلِ وَالإِكْرَامِ</p>
+                            <p class="text-xs text-slate-600">"O Allah, You are Peace and from You is peace. Blessed are You, Possessor of majesty and honor."</p>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 rounded-2xl space-y-1">
+                            <span class="text-xs font-bold text-emerald-700">3. 33-33-34 Tasbih Sequence</span>
+                            <p class="text-xs text-slate-600">Recite <strong>SubhanAllah</strong> (33x), <strong>Alhamdulillah</strong> (33x), and <strong>Allahu Akbar</strong> (34x) after every obligatory prayer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: ZAKAT & SAWM CALCULATOR -->
+        <section id="sec-zakat" class="hidden space-y-8">
+            <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-sm">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Zakat & Fasting Calculators</h2>
+                <p class="text-slate-600 text-sm mt-1">Calculate your obligatory 2.5% wealth charity and understand fasting rules.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Calculator Inputs -->
+                <div class="lg:col-span-2 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-sm space-y-6">
+                    <h3 class="text-xl font-bold text-slate-900 border-b pb-3">Net Wealth Inputs (Held for 1 Hijri Year)</h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">Cash in Bank & Hand ($)</label>
+                            <input type="number" id="z-cash" value="0" min="0" oninput="calculateZakat()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:outline-none text-sm font-semibold">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">Gold & Silver Asset Value ($)</label>
+                            <input type="number" id="z-gold" value="0" min="0" oninput="calculateZakat()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:outline-none text-sm font-semibold">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">Stocks, Investments & Savings ($)</label>
+                            <input type="number" id="z-invest" value="0" min="0" oninput="calculateZakat()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:outline-none text-sm font-semibold">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">Deduct Immediate Short-Term Debts ($)</label>
+                            <input type="number" id="z-debts" value="0" min="0" oninput="calculateZakat()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:outline-none text-sm font-semibold">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Zakat Total Display -->
+                <div class="bg-gradient-to-br from-emerald-900 to-emerald-950 text-white p-8 rounded-3xl shadow-xl flex flex-col justify-between border border-emerald-700/50">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-300 bg-emerald-800/80 px-2.5 py-1 rounded-md">Annual Due</span>
+                        <h3 class="text-lg font-bold mt-3 text-emerald-100">Total Zakat Payable</h3>
+                        <p id="zakat-total" class="text-5xl font-extrabold text-amber-400 my-4">$0.00</p>
+                        <p class="text-xs text-emerald-200 leading-relaxed">Calculated precisely at 2.5% of net zakat-eligible wealth once exceeding the Nisab threshold (~85g of pure gold).</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-emerald-800 text-[11px] text-emerald-300 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-info text-amber-400"></i>
+                        <span>Zakat purifies remaining wealth and brings divine blessing (*Barakah*).</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: DAILY TRACKER -->
+        <section id="sec-tracker" class="hidden space-y-8">
+            <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Daily Obligation Checklist</h2>
+                    <p class="text-slate-600 text-sm mt-1">Track your 5 daily prayers and essential obligatory duties. Progress saves automatically in your browser.</p>
+                </div>
+                <button onclick="resetTracker()" class="text-xs text-red-600 hover:text-red-700 font-bold border border-red-200 px-4 py-2 rounded-xl bg-red-50 hover:bg-red-100 transition">
+                    <i class="fa-solid fa-arrow-rotate-right mr-1"></i> Reset Daily Checklist
+                </button>
+            </div>
+
+            <!-- Prayer Tracker Grid -->
+            <div class="bg-white rounded-3xl border border-slate-200/80 shadow-sm overflow-hidden">
+                <div class="p-4 bg-emerald-900 text-white font-bold text-sm flex justify-between items-center">
+                    <span>5 Obligatory Daily Prayers (Salah)</span>
+                    <span id="tracker-progress-text" class="text-xs text-amber-300 font-semibold">0 / 5 Completed</span>
+                </div>
+                <div class="divide-y divide-slate-100">
+                    <label class="flex items-center justify-between p-5 hover:bg-slate-50 cursor-pointer transition">
+                        <div class="flex items-center space-x-3">
+                            <input type="checkbox" id="chk-fajr" onchange="saveTracker()" class="w-6 h-6 text-emerald-600 rounded-lg focus:ring-emerald-500 border-slate-300">
+                            <div>
+                                <span class="font-bold text-slate-900 block text-base">Fajr Prayer</span>
+                                <span class="text-xs text-slate-500">2 Rakat Fard • Dawn</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">Fard 'Ayn</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-5 hover:bg-slate-50 cursor-pointer transition">
+                        <div class="flex items-center space-x-3">
+                            <input type="checkbox" id="chk-dhuhr" onchange="saveTracker()" class="w-6 h-6 text-emerald-600 rounded-lg focus:ring-emerald-500 border-slate-300">
+                            <div>
+                                <span class="font-bold text-slate-900 block text-base">Dhuhr Prayer</span>
+                                <span class="text-xs text-slate-500">4 Rakat Fard • Noon</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">Fard 'Ayn</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-5 hover:bg-slate-50 cursor-pointer transition">
+                        <div class="flex items-center space-x-3">
+                            <input type="checkbox" id="chk-asr" onchange="saveTracker()" class="w-6 h-6 text-emerald-600 rounded-lg focus:ring-emerald-500 border-slate-300">
+                            <div>
+                                <span class="font-bold text-slate-900 block text-base">Asr Prayer</span>
+                                <span class="text-xs text-slate-500">4 Rakat Fard • Afternoon</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">Fard 'Ayn</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-5 hover:bg-slate-50 cursor-pointer transition">
+                        <div class="flex items-center space-x-3">
+                            <input type="checkbox" id="chk-maghrib" onchange="saveTracker()" class="w-6 h-6 text-emerald-600 rounded-lg focus:ring-emerald-500 border-slate-300">
+                            <div>
+                                <span class="font-bold text-slate-900 block text-base">Maghrib Prayer</span>
+                                <span class="text-xs text-slate-500">3 Rakat Fard • Sunset</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">Fard 'Ayn</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-5 hover:bg-slate-50 cursor-pointer transition">
+                        <div class="flex items-center space-x-3">
+                            <input type="checkbox" id="chk-isha" onchange="saveTracker()" class="w-6 h-6 text-emerald-600 rounded-lg focus:ring-emerald-500 border-slate-300">
+                            <div>
+                                <span class="font-bold text-slate-900 block text-base">Isha Prayer</span>
+                                <span class="text-xs text-slate-500">4 Rakat Fard • Night</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">Fard 'Ayn</span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-emerald-950 text-emerald-300 py-10 border-t border-emerald-800/60 mt-auto text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <i class="fa-solid fa-kaaba text-amber-400 text-2xl"></i>
+                <div>
+                    <p class="font-bold text-sm text-white">Al-Fard Educational Companion</p>
+                    <p class="text-emerald-400 text-[11px]">Empowering Muslims to fulfill daily obligatory acts with understanding and excellence (*Ihsan*).</p>
+                </div>
+            </div>
+            <p class="text-emerald-400 text-center md:text-right">Knowledge based on authentic Quranic verses & Sunnah.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Tab switching system
+        function switchTab(tabId) {
+            const sections = ['pillars', 'salah', 'wudu', 'surahs', 'hadith', 'adhkar', 'zakat', 'tracker'];
+            sections.forEach(sec => {
+                const el = document.getElementById(`sec-${sec}`);
+                const btn = document.getElementById(`btn-${sec}`);
+                if (el) el.classList.add('hidden');
+                if (btn) {
+                    btn.classList.remove('active-tab');
+                    btn.classList.add('text-emerald-100');
+                }
+            });
+
+            const activeSec = document.getElementById(`sec-${tabId}`);
+            const activeBtn = document.getElementById(`btn-${tabId}`);
+            
+            if (activeSec) activeSec.classList.remove('hidden');
+            if (activeBtn) {
+                activeBtn.classList.add('active-tab');
+                activeBtn.classList.remove('text-emerald-100');
+            }
+
+            // Close mobile menu on select
+            document.getElementById('mobile-menu').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Zakat Calculator
+        function calculateZakat() {
+            const cash = parseFloat(document.getElementById('z-cash').value) || 0;
+            const gold = parseFloat(document.getElementById('z-gold').value) || 0;
+            const invest = parseFloat(document.getElementById('z-invest').value) || 0;
+            const debts = parseFloat(document.getElementById('z-debts').value) || 0;
+
+            const netWealth = Math.max(0, (cash + gold + invest) - debts);
+            const zakat = netWealth * 0.025;
+
+            document.getElementById('zakat-total').textContent = `$${zakat.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        }
+
+        // Digital Tasbih Counter Logic
+        let tasbihCount = 0;
+        let tasbihTarget = 33;
+
+        function countTasbih() {
+            tasbihCount++;
+            document.getElementById('tasbih-count').textContent = tasbihCount;
+            
+            // Vibration feedback if available on mobile
+            if (navigator.vibrate) {
+                navigator.vibrate(30);
+            }
+
+            if (tasbihCount === tasbihTarget) {
+                if (navigator.vibrate) {
+                    navigator.vibrate([100, 50, 100]);
+                }
+            }
+        }
+
+        function resetTasbih() {
+            tasbihCount = 0;
+            document.getElementById('tasbih-count').textContent = tasbihCount;
+        }
+
+        function setDhikr(arabic, translation, target) {
+            document.getElementById('dhikr-label').textContent = arabic;
+            document.getElementById('dhikr-translation').textContent = translation;
+            document.getElementById('dhikr-target-display').textContent = target;
+            tasbihTarget = target;
+            resetTasbih();
+        }
+
+        // Daily Prayer Tracker Persistence via localStorage
+        function saveTracker() {
+            const trackerData = {
+                fajr: document.getElementById('chk-fajr').checked,
+                dhuhr: document.getElementById('chk-dhuhr').checked,
+                asr: document.getElementById('chk-asr').checked,
+                maghrib: document.getElementById('chk-maghrib').checked,
+                isha: document.getElementById('chk-isha').checked
+            };
+            localStorage.setItem('alfard_daily_tracker', JSON.stringify(trackerData));
+            updateTrackerProgress();
+        }
+
+        function loadTracker() {
+            const saved = localStorage.getItem('alfard_daily_tracker');
+            if (saved) {
+                const data = JSON.parse(saved);
+                document.getElementById('chk-fajr').checked = !!data.fajr;
+                document.getElementById('chk-dhuhr').checked = !!data.dhuhr;
+                document.getElementById('chk-asr').checked = !!data.asr;
+                document.getElementById('chk-maghrib').checked = !!data.maghrib;
+                document.getElementById('chk-isha').checked = !!data.isha;
+            }
+            updateTrackerProgress();
+        }
+
+        function updateTrackerProgress() {
+            const keys = ['chk-fajr', 'chk-dhuhr', 'chk-asr', 'chk-maghrib', 'chk-isha'];
+            const completed = keys.filter(id => document.getElementById(id)?.checked).length;
+            const progressEl = document.getElementById('tracker-progress-text');
+            if (progressEl) {
+                progressEl.textContent = `${completed} / 5 Completed`;
+            }
+        }
+
+        function resetTracker() {
+            const items = ['chk-fajr', 'chk-dhuhr', 'chk-asr', 'chk-maghrib', 'chk-isha'];
+            items.forEach(id => {
+                if (document.getElementById(id)) document.getElementById(id).checked = false;
+            });
+            saveTracker();
+        }
+
+        // Page Load Initializer
+        window.onload = function() {
+            loadTracker();
+            calculateZakat();
+        };
+    </script>
+</body>
+</html>
